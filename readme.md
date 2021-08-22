@@ -10,12 +10,12 @@ Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 
 ## Tampilan Aplikasi
 .
-<img src="_file/0.png" alt="alt text" width="150"/>
-<img src="_file/1.png" alt="alt text" width="150"/>
-<img src="_file/2.png" alt="alt text" width="150"/>
-<img src="_file/3.png" alt="alt text" width="150"/>
-<img src="_file/4.png" alt="alt text" width="150"/>
-<img src="_file/5.png" alt="alt text" width="150"/>
+<img src="_file/0.png" alt="alt text" width="300"/>
+<img src="_file/1.png" alt="alt text" width="300"/>
+<img src="_file/2.png" alt="alt text" width="300"/>
+<img src="_file/3.png" alt="alt text" width="300"/>
+<img src="_file/4.png" alt="alt text" width="300"/>
+<img src="_file/5.png" alt="alt text" width="300"/>
 
 # License
 MIT License
