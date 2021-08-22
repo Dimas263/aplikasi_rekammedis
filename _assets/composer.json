@@ -1,0 +1,6 @@
+{
+    "require": {
+        "composer/composer": "^2.1",
+        "ramsey/uuid": "^4.2"
+    }
+}
