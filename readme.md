@@ -21,6 +21,8 @@ Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 <img src="_file/4.png" alt="alt text" width="600"/>
 .
 <img src="_file/5.png" alt="alt text" width="600"/>
+.
+<img src="_file/6.png" alt="alt text" width="600"/>
 
 # License
 MIT License
