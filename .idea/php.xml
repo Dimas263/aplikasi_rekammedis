@@ -58,6 +58,42 @@
       <path value="$PROJECT_DIR$/vendor/illuminate/macroable" />
       <path value="$PROJECT_DIR$/vendor/illuminate/filesystem" />
       <path value="$PROJECT_DIR$/vendor/illuminate/collections" />
+      <path value="$PROJECT_DIR$/_assets/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/_assets/vendor/composer" />
+      <path value="$PROJECT_DIR$/_assets/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/_assets/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/_assets/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/_assets/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/_assets/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/_assets/vendor/react/promise" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/_assets/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/_assets/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/_assets/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/_assets/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/_assets/vendor/ckeditor/ckeditor" />
+      <path value="$PROJECT_DIR$/_assets/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/_assets/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/_assets/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/_assets/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/_assets/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/_assets/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/_assets/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/_assets/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/_assets/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/_assets/vendor/myclabs/php-enum" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0">

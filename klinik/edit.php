@@ -1,60 +1,553 @@
 <?php
-$chk = $_POST['checked'];
-if(!isset($chk)){
-    echo "<script>alert('Tidak ada data yang dipilih!'); window.location='data ';</script>";
-} else {
-    include_once('../_header.php');?>
-
-    <div class="box">
-        <span  style="color: #292826;"><center><h1>Edit Data Poliklinik</h1></center></span>
-        <br/>
-        <h4>
-            <small class="pull-left" style="color: #292826;font-weight:normal">Tabel Edit Data Poliklinik</small>
-            <br/>
-        </h4>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <form action="proses " method="post">
-                        <input type="hidden" name="total" value="<?=@$_POST['count_add']?>">
-                        <table class="table table-custom w-auto bordered-table table-hover table-fixed stacktable small-only" width="100%">
-                        <tr bgcolor="#f9d342" style="background-color: #f4d35e; color: #1e2425;">
-                            <th>No.</th>
-                            <th>Nama Poliklinik</th>
-                            <th>Alamat</th>
-                            <th>Jam Operasi</th>
-                        </tr>
-                        <?php
-                        $no = 1;
-                        foreach($chk as $id){
-                            $sql_klinik = mysqli_query($con, "SELECT * FROM tb_klinik WHERE id_klinik = '$id'") or die (mysqli_error()); 
-                            while($data = mysqli_fetch_array($sql_klinik)){ ?>  
-                            <tr>
-                                <td bgcolor="#0fa3b1" style="color: #efeeee"><?=$no++?></td>
-                                <td bgcolor="#ffffff">
-                                    <input type="hidden" name="id[]" value="<?=$data['id_klinik']?>"> 
-                                    <input type="text" name="nama[]" value="<?=$data['nama_klinik']?>" class="form-control" required> 
-                                    
-                                </td>
-                                <td bgcolor="#ffffff">
-                                    <input type="text" name="alamat[]" value="<?=$data['alamat_klinik']?>" class="form-control" required>
-                                </td>
-                                <td bgcolor="#ffffff">
-                                    <input type="text" name="jam[]" value="<?=$data['jam_operasi']?>" class="form-control" required>
-                                </td>
-                            </tr>
-                            <?php
-                            }
-                        }
-                        ?>
-                    </table>
-                    <div class="form-group" align="center">
-                        <a href="data " class="btn btn-light" style="background-color: #f4d35e; color: #1e2425;font-weight:bold"> Batalkan</a>
-                        <input type="submit" name="edit" value="Simpan" class="btn btn-light" style="background-color: #0fa3b1; color: #efeeee;font-weight:bold">
+require_once "../_config/config.php";
+include_once('../_header.php');
+?>
+    <div class="page has-sidebar-left height-full">
+        <header class="blue accent-3 relative nav-sticky">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            Ubah Data Klinik
+                        </h4>
                     </div>
-                </form>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid relative animatedParent animateOnce">
+            <div class="container-fluid my-3">
+                <div class="row">
+                    <div class="col-md-8 center">
+                        <div class="card shadow-sm">
+                            <div class="card-body b-b">
+                                <h4>Detail Klinik</h4>
+                                <?php
+                                $id = $_GET['id'];
+                                $sql_klinik = mysqli_query($con, "SELECT * FROM tb_klinik WHERE id_klinik = '$id'") or die (mysqli_error($con));
+                                $data = mysqli_fetch_array($sql_klinik);
+                                ?>
+                                <form class="form-material" action="proses" method="post">
+                                    <!-- Input -->
+                                    <div class="body">
+                                        <h6>Nama Klinik</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <input type="hidden" name="id" value="<?=$data['id_klinik']?>">
+                                                        <input type="text" name="nama_klinik" id="nama_klinik" class="form-control" value="<?=$data['nama_klinik']?>" autofocus required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Alamat</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <input type="text" name="alamat_klinik" id="alamat_klinik" class="form-control" value="<?=$data['alamat_klinik']?>" required/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>Jadwal</h4>
+                                        <h6>Senin</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="senin_awal" id="senin_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="senin_akhir" id="senin_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Selasa</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="selasa_awal" id="selasa_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="selasa_akhir" id="selasa_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Rabu</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="rabu_awal" id="rabu_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="rabu_akhir" id="rabu_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Kamis</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="kamis_awal" id="kamis_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="kamis_akhir" id="kamis_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Jumat</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="jumat_awal" id="jumat_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="jumat_akhir" id="jumat_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Sabtu</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="sabtu_awal" id="sabtu_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="sabtu_akhir" id="sabtu_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Minggu</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="minggu_awal" id="minggu_awal" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="minggu_akhir" id="minggu_akhir" class="form-control">
+                                                            <option>00:00 WIB</option>
+                                                            <option>01:00 WIB</option>
+                                                            <option>02:00 WIB</option>
+                                                            <option>03:00 WIB</option>
+                                                            <option>04:00 WIB</option>
+                                                            <option>05:00 WIB</option>
+                                                            <option>06:00 WIB</option>
+                                                            <option>07:00 WIB</option>
+                                                            <option>08:00 WIB</option>
+                                                            <option>09:00 WIB</option>
+                                                            <option>10:00 WIB</option>
+                                                            <option>11:00 WIB</option>
+                                                            <option>12:00 WIB</option>
+                                                            <option>13:00 WIB</option>
+                                                            <option>14:00 WIB</option>
+                                                            <option>15:00 WIB</option>
+                                                            <option>16:00 WIB</option>
+                                                            <option>17:00 WIB</option>
+                                                            <option>18:00 WIB</option>
+                                                            <option>19:00 WIB</option>
+                                                            <option>20:00 WIB</option>
+                                                            <option>21:00 WIB</option>
+                                                            <option>22:00 WIB</option>
+                                                            <option>23:00 WIB</option>
+                                                            <option>24:00 WIB</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row clearfix">
+                                            <div class="center">
+                                                <input type="submit" name="edit" value="Simpan" class="btn btn-primary mt-2">
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <?php
-    include_once('../_footer.php');
-} ?>
+    </div>
+<?php include_once('../_footer.php');?>

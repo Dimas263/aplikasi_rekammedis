@@ -21,8 +21,8 @@ include_once('../_header.php');
         <div class="container-fluid relative animatedParent animateOnce">
             <div class="container-fluid my-3">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
+                    <div class="col-md-8 center">
+                        <div class="card shadow-sm">
                             <div class="card-body b-b">
                                 <h4>Detail Pasien</h4>
                                 <form class="form-material">
@@ -106,7 +106,7 @@ include_once('../_header.php');
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        @<?=$data['email']?>
+                                                        <?=$data['email']?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -256,8 +256,7 @@ include_once('../_header.php');
                                         <br>
                                         <div class="row clearfix">
                                             <div class="center">
-                                                <a href="<?=base_url('pasien/')?>" class="btn btn-danger mt-2"><i class="icon-arrow_back mr-2"></i>Kembali</a>
-                                                <a href="" class="btn btn-success mt-2"><i class="icon-pencil mr-2"></i>Ubah</a>
+                                                <a href="edit.php?id=<?=$data['id_pasien']?>" class="btn btn-success mt-2"><i class="icon-pencil mr-2"></i>Ubah</a>
                                                 <a onclick="myPrint('myprint')" class="btn btn-primary mt-2"><i class="icon-print mr-2"></i>Print</a>
                                             </div>
                                         </div>

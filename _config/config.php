@@ -12,7 +12,7 @@ if(mysqli_connect_errno()){
 
 //fungsi base url
 function base_url($url = null){
-    $base_url = "http://localhost/aplikasi%20rekammedis";
+    $base_url = "http://localhost/aplikasi_rekammedis";
     if($url != null){
         return $base_url."/".$url;
     }else{

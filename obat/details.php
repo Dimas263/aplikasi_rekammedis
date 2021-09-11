@@ -54,7 +54,7 @@ include_once('../_header.php');
                                                 </tbody>
                                             </table>
                                             <div class="form-group" align="center">
-                                                <a href="data " class="btn btn-light" style="background-color : #ebebd3;color : #1e2425;font-weight:bold">&nbsp;Kembali&nbsp;&nbsp;</a>
+                                                <a href="edit.php?id=<?=$data['id_obat']?>" class="btn btn-success mt-2"><i class="icon-pencil mr-2"></i>Ubah</a>
                                                 <a onclick="myPrint('myfrm')" class="btn btn-light" style="background-color : #f4d35e;color : #1e2425;font-weight:bold">Print</a>
                                             </div>
                                         </form>

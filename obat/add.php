@@ -1,60 +1,113 @@
 <?php
+require_once "../_config/config.php";
 include_once('../_header.php');
 ?>
-
-    <div class="box">
-        <div class="container">
-            <div id="loginbox" style="margin-top:65px;font-size: 14px" class="mainbox col-lg-12">
-                <div class="panel panel-light">
-                    <div class="panel-heading" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                        <div class="panel-body">
-                            <div align="center" style="margin-top: 20px;">
-                                <div style="color: #292826;font-weight:bold"><h2>Data Obat Baru</h2></div>
-                                    <br/>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12">
-                                            <form action="proses " method="post">
-                                                <div class="form-group" style="margin-top:15px;" >
-                                                    <input type="text" name="kode" class="form-control" placeholder="Kode Obat" required autofocus>
+<div class="page has-sidebar-left height-full">
+    <header class="blue accent-3 relative nav-sticky">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        Tambah Obat Baru
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid relative animatedParent animateOnce">
+        <div class="container-fluid my-3">
+            <div class="row">
+                <div class="col-md-8 center">
+                    <div class="card shadow-sm">
+                        <div class="card-body b-b">
+                            <h4>Detail Obat</h4>
+                            <form class="form-material" action="proses" method="post">
+                                <!-- Input -->
+                                <div class="body">
+                                    <h6>Nama obat</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_obat" id="nama_obat" class="form-control" placeholder="Nama obat" autofocus required />
                                                 </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="nama" class="form-control" placeholder="Nama Obat" required autofocus>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <textarea name="ket" id="ket" class="form-control" placeholder="Keterangan Obat" required></textarea>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="text" name="dosis" class="form-control" placeholder="Dosis Obat" required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                     <input type="text" name="jenis" class="form-control" placeholder="Jenis Obat" required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                     <input type="text" name="stok" class="form-control" placeholder="Stok Obat" required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="date" name="expired" value="<?=date('Y-m-d')?>" class="form-control" required>
-                                                </div>
-
-                                                <br/>
-                                                <div class="box" align="center">
-                                                    <a href="data " class="btn btn-light" style="background-color : #ebebd3;color : #1e2425;font-weight:bold;">&nbsp;Batal&nbsp;&nbsp;</a>
-                                                    <input type="submit" name="add" value="Simpan" class="btn btn-light" style="background-color : #f95738;color : #efeeee;font-weight:bold;">
-                                                </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
-                            </div>
+                                    <h6>Keterangan</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Obat</h6>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select name="jenis" id="jenis" class="form-control">
+                                                        <option>injeksi</option>
+                                                        <option>kapsul</option>
+                                                        <option>sirup</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="number" name="dosis" id="dosis" class="form-control" placeholder="dosis" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <select name="satuan" id="satuan" class="form-control">
+                                                        <option>g</option>
+                                                        <option>kg</option>
+                                                        <option>ml</option>
+                                                        <option>l</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Stok</h6>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" name="stok" id="stok" class="form-control" placeholder="stok" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>Kadaluarsa</h6>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input type="date" name="kadaluarsa" id="kadaluarsa" class="form-control" placeholder="<?=date('Y-m-d')?>" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row clearfix">
+                                        <div class="center">
+                                            <input type="submit" name="add" value="Simpan" class="btn btn-primary mt-2">
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+</div>
+</div>
 <?php include_once('../_footer.php');?>

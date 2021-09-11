@@ -1,74 +1,128 @@
 <?php
+require_once "../_config/config.php";
 include_once('../_header.php');
-
 ?>
-
-    <div class="box">
-        <div class="container">
-            <div id="loginbox" style="font-size: 14px" class="mainbox col-lg-12">
-                <div class="panel panel-light">
-                    <div class="panel-heading" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                        <div class="panel-body" id="myfrm">
-                            <div align="center" style="margin-top: 20px;">
-                                <div style="color: #292826;font-weight:bold"><b style="color: #083d77"><h2>Informasi Detail Dokter</h2></b></div>
-                                <br>
-                                <br>
-                                <div class="col-lg-12">
-                                    <div >
+    <div class="page has-sidebar-left height-full">
+        <header class="blue accent-3 relative nav-sticky">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <?php
+                            $id = $_GET['id'];
+                            echo 'Dokter ID :  ';
+                            echo $id;
+                            ?>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid relative animatedParent animateOnce">
+            <div class="container-fluid my-3">
+                <div class="row">
+                    <div class="col-md-8 center">
+                        <div class="card shadow-sm">
+                            <div class="card-body b-b">
+                                <h4>Detail Dokter</h4>
+                                <form class="form-material">
+                                    <!-- Input -->
+                                    <div class="body">
                                         <?php
-                                        $id = $_GET['id'];
                                         $sql_dokter = mysqli_query($con, "SELECT * FROM tb_dokter WHERE id_dokter = '$id'") or die (mysqli_error($con));
                                         $data = mysqli_fetch_array($sql_dokter);
                                         ?>
-                                        <form class="box" align="center">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">Nama Dokter</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['nama_dokter']?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">Spesialis</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['spesialis']?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">Alamat</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['alamat']?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">No.Telepon</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['no_telp']?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">Email</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['email']?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">Mulai Praktik</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['mulai_praktek']?></h3></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><h3 class="text-left" style="padding-left: 65px">Jadwal Jaga</h3></td>
-                                                    <td><h3 class="text-left" style="padding-left: 50px">: <?=$data['jadwal_jaga']?></h3></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form-group" align="center">
-                                                <a href="data " class="btn btn-light" style="background-color : #ebebd3;color : #1e2425;font-weight:bold">&nbsp;Kembali&nbsp;&nbsp;</a>
-                                                <a onclick="myPrint('myfrm')" class="btn btn-light" style="background-color : #f4d35e;color : #1e2425;font-weight:bold">Print</a>
+                                        <h6>Nama Dokter</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <?=$data['nama_dokter']?>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </form>
-                                        <script>
-                                            function myPrint(myfrm) {
-                                                var printdata = document.getElementById(myfrm);
-                                                newwin = window.open("");
-                                                newwin.document.write(printdata.outerHTML);
-                                                newwin.print();
-                                                newwin.close();
-                                            }
-                                        </script>
+                                        </div>
+                                        <h6>Spesialis</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <?=$data['spesialis']?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Alamat</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <?=$data['alamat']?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Email</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <?=$data['email']?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>No.Telepon</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <?=$data['no_telp']?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6>Jadwal</h6>
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Senin</span> : <?=$data['senin']?>
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Selasa</span> : <?=$data['selasa']?>
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Rabu</span> : <?=$data['rabu']?>
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Kamis</span> : <?=$data['kamis']?>
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Jumat</span> : <?=$data['jumat']?>
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Sabtu</span> : <?=$data['sabtu']?>
+                                                        <br>
+                                                        <span class="text-blue font-weight-bold">Minggu</span> : <?=$data['minggu']?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row clearfix">
+                                            <div class="center">
+                                                <a href="edit.php?id=<?=$data['id_dokter']?>" class="btn btn-success mt-2"><i class="icon-pencil mr-2"></i>Ubah</a>
+                                                <a onclick="myPrint('myprint')" class="btn btn-primary mt-2"><i class="icon-print mr-2"></i>Print</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
+                                <script>
+                                    function myPrint(myprint) {
+                                        var printdata = document.getElementById(myprint);
+                                        newwin = window.open("");
+                                        newwin.document.write(printdata.outerHTML);
+                                        newwin.print();
+                                        newwin.close();
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -76,5 +130,4 @@ include_once('../_header.php');
             </div>
         </div>
     </div>
-
 <?php include_once('../_footer.php');?>

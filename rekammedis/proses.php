@@ -14,7 +14,7 @@ if(isset($_POST['add'])){
     $diagnosa = trim(mysqli_real_escape_string($con, $_POST['diagnosa']));
     $klinik = trim(mysqli_real_escape_string($con, $_POST['klinik']));
     $tgl = trim(mysqli_real_escape_string($con, $_POST['tgl']));
-    mysqli_query($con, "INSERT INTO tb_rekammedis (id_rekammedis, id_pasien, keluhan, id_dokter, diagnosa, id_klinik, tgl_periksa) values ('$uuid','$pasien', '$keluhan','$dokter', '$diagnosa', '$klinik', '$tgl')") or die (mysqli_error($con));
+    mysqli_query($con, "INSERT INTO tb_rekammedis (id_rekammedis, id_pasien, keluhan, id_dokter, diagnosa, id_klinik, tanggal_periksa) values ('$uuid','$pasien', '$keluhan','$dokter', '$diagnosa', '$klinik', '$tgl')") or die (mysqli_error($con));
     
     $suster = $_POST['suster'];
     foreach($suster as $perawat){

@@ -1,6 +1,10 @@
 {
     "require": {
         "composer/composer": "^2.1",
-        "ramsey/uuid": "^4.2"
+        "ramsey/uuid": "^4.2",
+        "phpoffice/phpexcel": "^1.8",
+        "ext-gd": "*",
+        "ckeditor/ckeditor": "^4.16",
+        "phpoffice/phpspreadsheet": "^1.18"
     }
 }

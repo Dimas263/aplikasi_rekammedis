@@ -25,10 +25,17 @@ include_once('../_header.php');
                                         <img src="https://img.icons8.com/color/48/000000/cast.png"/>
                                     </div>
                                     <div class="counter-title">Pasien</div>
-                                    <h5 class="sc-counter mt-3">15</h5>
+                                    <?php
+                                    // mengambil data pasien
+                                    $data_pasien = mysqli_query($con,"SELECT * FROM tb_pasien");
+
+                                    // menghitung data pasien
+                                    $jumlah_pasien = mysqli_num_rows($data_pasien);
+                                    ?>
+                                    <h5 class="sc-counter mt-3"><?=$jumlah_pasien?></h5>
                                 </div>
                                 <div class="progress progress-xs r-0">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                    <div class="progress-bar" role="progressbar" style="width: <?=$jumlah_pasien?>%;" aria-valuenow="25"
                                          aria-valuemin="0" aria-valuemax="128"></div>
                                 </div>
                             </div>
@@ -40,10 +47,17 @@ include_once('../_header.php');
                                         <img src="https://img.icons8.com/color/48/000000/medical-doctor.png"/>
                                     </div>
                                     <div class="counter-title ">Dokter</div>
-                                    <h5 class="sc-counter mt-3">12</h5>
+                                    <?php
+                                    // mengambil data dokter
+                                    $data_dokter = mysqli_query($con,"SELECT * FROM tb_dokter");
+
+                                    // menghitung data dokter
+                                    $jumlah_dokter = mysqli_num_rows($data_dokter);
+                                    ?>
+                                    <h5 class="sc-counter mt-3"><?=$jumlah_dokter?></h5>
                                 </div>
                                 <div class="progress progress-xs r-0">
-                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="25"
+                                    <div class="progress-bar" role="progressbar" style="width: <?=$jumlah_dokter?>%;" aria-valuenow="25"
                                          aria-valuemin="0" aria-valuemax="128"></div>
                                 </div>
                             </div>
@@ -55,10 +69,17 @@ include_once('../_header.php');
                                         <img src="https://img.icons8.com/color/48/000000/doctor-female.png"/>
                                     </div>
                                     <div class="counter-title">Suster</div>
-                                    <h5 class="sc-counter mt-3">16</h5>
+                                    <?php
+                                    // mengambil data suster
+                                    $data_suster = mysqli_query($con,"SELECT * FROM tb_suster");
+
+                                    // menghitung data suster
+                                    $jumlah_suster = mysqli_num_rows($data_suster);
+                                    ?>
+                                    <h5 class="sc-counter mt-3"><?=$jumlah_suster?></h5>
                                 </div>
                                 <div class="progress progress-xs r-0">
-                                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="25"
+                                    <div class="progress-bar" role="progressbar" style="width: <?=$jumlah_suster?>%;" aria-valuenow="25"
                                          aria-valuemin="0" aria-valuemax="128"></div>
                                 </div>
                             </div>
@@ -70,10 +91,17 @@ include_once('../_header.php');
                                         <img src="https://img.icons8.com/color/48/000000/pills.png"/>
                                     </div>
                                     <div class="counter-title">Obat</div>
-                                    <h5 class="sc-counter mt-3">50</h5>
+                                    <?php
+                                    // mengambil data obat
+                                    $data_obat = mysqli_query($con,"SELECT * FROM tb_obat");
+
+                                    // menghitung data obat
+                                    $jumlah_obat = mysqli_num_rows($data_obat);
+                                    ?>
+                                    <h5 class="sc-counter mt-3"><?=$jumlah_obat?></h5>
                                 </div>
                                 <div class="progress progress-xs r-0">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                    <div class="progress-bar" role="progressbar" style="width: <?=$jumlah_obat?>%;" aria-valuenow="25"
                                          aria-valuemin="0" aria-valuemax="128"></div>
                                 </div>
                             </div>
@@ -88,13 +116,13 @@ include_once('../_header.php');
                                 <div class="row my-3">
                                     <div class="col-md-3">
                                         <div class="my-3 mt-4">
-                                            <h5>Laporan Rekammedis Pasien <span class="red-text">+203</span></h5>
+                                            <h5>Laporan Rekammedis Pasien</h5>
                                         </div>
                                     </div>
                                     <div class="col-md-9" style="height: 350px">
                                         <canvas data-chart="line" data-dataset="[
-                                                            [0, 15, 4, 30, 8, 5, 18],
-                                                            [1, 7, 21, 4, 12, 5, 10],
+                                                            [0, 15, 4, 15, 8, 1, 2],
+                                                            [1, 7, 21, 4, 12, 5, 0],
 
                                                             ]" data-labels="['2016', '2017', '2018', '2019', '2020', '2021']"
                                                 data-dataset-options="[
