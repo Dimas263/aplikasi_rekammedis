@@ -11,11 +11,15 @@ Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 ## Tampilan Aplikasi
 .
 <img src="_file/0.png" alt="alt text" width="600"/>
+
+###Halaman Awal
+<img src="_file/1.png" alt="alt text" width="600"/>
+
+###Database
 .
 <img src="_file/database.png" alt="alt text" width="600"/>
-.
-<img src="_file/1.png" alt="alt text" width="600"/>
-.
+
+###Pasien
 <img src="_file/2.png" alt="alt text" width="600"/>
 .
 <img src="_file/3.png" alt="alt text" width="600"/>
@@ -29,29 +33,35 @@ Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 <img src="_file/7.png" alt="alt text" width="600"/>
 .
 <img src="_file/8.png" alt="alt text" width="600"/>
-.
+
+###Dokter
 <img src="_file/9.png" alt="alt text" width="600"/>
 .
 <img src="_file/10.png" alt="alt text" width="600"/>
 .
 <img src="_file/11.png" alt="alt text" width="600"/>
-.
+
+###Suster
 <img src="_file/12.png" alt="alt text" width="600"/>
-.
+
+###Klinik
 <img src="_file/13.png" alt="alt text" width="600"/>
 .
 <img src="_file/14.png" alt="alt text" width="600"/>
-.
+
+###Obat
 <img src="_file/15.png" alt="alt text" width="600"/>
 .
 <img src="_file/16.png" alt="alt text" width="600"/>
-.
+
+###Rekammedis
 <img src="_file/17.png" alt="alt text" width="600"/>
 .
 <img src="_file/18.png" alt="alt text" width="600"/>
 .
 <img src="_file/19.png" alt="alt text" width="600"/>
-.
+
+###Admin Access
 <img src="_file/20.png" alt="alt text" width="600"/>
 
 # License
