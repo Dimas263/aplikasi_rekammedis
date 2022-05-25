@@ -5,12 +5,15 @@ Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 ## Developer
 [Dimas Dwi Putra](https://github.com/Dimas263/)
 
+<!--
 - Contact Me Via [Whatsapp](https://wa.me/+6285811379583)
-
+-->
 
 ## Tampilan Aplikasi
+<!--
 .
 <img src="_file/0.png" alt="alt text" width="600"/>
+-->
 
 ### Halaman Awal
 <img src="_file/1.png" alt="alt text" width="600"/>
