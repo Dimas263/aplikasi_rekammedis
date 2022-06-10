@@ -1,13 +1,9 @@
-# Aplikasi_Rekammedis
+# <img src="https://img.icons8.com/external-filled-outline-satawat-anukul/64/undefined/external-medical-medical-filled-outline-filled-outline-satawat-anukul-50.png"/> Aplikasi_Rekammedis
 
 Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 
-## Developer
+## <img src="https://img.icons8.com/external-filled-outline-satawat-anukul/64/undefined/external-medical-medical-filled-outline-filled-outline-satawat-anukul-39.png"/> Developer
 [Dimas Dwi Putra](https://github.com/Dimas263/)
-
-<!--
-- Contact Me Via [Whatsapp](https://wa.me/+6285811379583)
--->
 
 ## Tampilan Aplikasi
 <!--
@@ -15,10 +11,10 @@ Aplikasi Rekammedis Admin Rumah Sakit Untuk Membuat Laporan Pasien.
 <img src="_file/0.png" alt="alt text" width="600"/>
 -->
 
-### Halaman Awal
+### <img src="https://img.icons8.com/fluent/48/undefined/domain.png"/> Halaman Awal
 <img src="_file/1.png" alt="alt text" width="600"/>
 
-### Database
+### <img src="https://img.icons8.com/office/48/undefined/database.png"/> Database
 .
 <img src="_file/database.png" alt="alt text" width="600"/>
 
