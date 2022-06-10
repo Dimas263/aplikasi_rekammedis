@@ -1,8 +1,8 @@
 <?php
 $sql_details = array(
-    'user' => 'root',
-    'pass' => '123',
-    'db' => 'hospital',
+    'user' => '',
+    'pass' => '',
+    'db' => '',
     'host' => 'localhost',
 );
 $con = $sql_details;
